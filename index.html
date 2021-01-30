@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.querySelector("#notes").innerHTML = filenames.filter((filename) => {
     return filename !== ".git" && filename != "offbase.json"
   }).map((filename) => {
-    return `<a class='note' href='/edit?note=${filename}'>${filename}</a>`
+    return `<a class='note' href='./edit?note=${filename}'>${filename}</a>`
   })
 })
 </script>
