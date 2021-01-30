@@ -6,6 +6,8 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  font-family: Sans-serif;
+  background: cornsilk;
 }
 nav {
   display: flex;
@@ -44,7 +46,7 @@ a {
 <script type='module'>
 import { fs } from "/offbase.js"
 document.addEventListener("DOMContentLoaded", async () => {
-  const filename = new URLSearchParams(location.search).get("note")
+  let filename = new URLSearchParams(location.search).get("note")
   if (filename) {
     let note = await fs.promises.readFile("/home/" + filename)
     document.querySelector("#note").value = note
