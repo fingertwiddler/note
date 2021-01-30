@@ -48,6 +48,7 @@ import { fs } from "/offbase.js"
 document.addEventListener("DOMContentLoaded", async () => {
   let filename = new URLSearchParams(location.search).get("note")
   if (filename) {
+    filename = decodeURIComponent(filename)
     let note = await fs.promises.readFile("/home/" + filename, "utf8")
     document.querySelector("#note").value = note
     document.querySelector("#filename").value = filename
@@ -55,7 +56,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.querySelector("#save").addEventListener("click", async (e) => {
     filename = document.querySelector("#filename").value;
     await fs.promises.writeFile("/home/" + filename, document.querySelector("#note").value, "utf8")
-    alert("saved!")
+    location.href = "."
   })
 })
 </script>
