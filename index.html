@@ -1,0 +1,29 @@
+<html>
+<head>
+<style>
+.note {
+  display: block;
+}
+#home {
+  padding: 10px;
+  color: black;
+}
+</style>
+<script type='module'>
+import { fs } from "/offbase.js"
+document.addEventListener("DOMContentLoaded", async () => {
+  let notes = await fs.promises.readdir("/home")
+  document.querySelector("#notes").innerHTML = notes.map((note) => {
+    return `<a class='note' href='/edit?note=${note}'>${note}</a>`
+  })
+})
+</script>
+</head>
+<body>
+<nav>
+<a id='home' href=".">Notes</a>
+<a href="/edit">+ New</a>
+</nav>
+<div id='notes'></div>
+</body>
+</html>

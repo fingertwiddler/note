@@ -1,0 +1,10 @@
+{
+  "name": "note",
+  "routes": [{
+    "from": "/",
+    "to": "/app/index.html"
+  }, {
+    "from": "/edit",
+    "to": "/app/edit.html"
+  }]
+}
