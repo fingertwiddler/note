@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   document.querySelector("#save").addEventListener("click", async (e) => {
     filename = document.querySelector("#filename").value;
-    await fs.promises.writeFile("/home/" + filename, document.querySelector("#note").value)
+    await fs.promises.writeFile("/home/" + filename, document.querySelector("#note").value, "utf8")
     alert("saved!")
   })
 })

@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     return filename !== ".git" && filename != "offbase.json"
   }).map((filename) => {
     return `<a class='note' href='./edit?note=${filename}'>${filename}</a>`
-  })
+  }).join("")
 })
 </script>
 </head>
