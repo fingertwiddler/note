@@ -48,7 +48,7 @@ import { fs } from "/offbase.js"
 document.addEventListener("DOMContentLoaded", async () => {
   let filename = new URLSearchParams(location.search).get("note")
   if (filename) {
-    let note = await fs.promises.readFile("/home/" + filename)
+    let note = await fs.promises.readFile("/home/" + filename, "utf8")
     document.querySelector("#note").value = note
     document.querySelector("#filename").value = filename
   }
