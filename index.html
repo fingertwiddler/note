@@ -8,13 +8,24 @@
   padding: 10px;
   color: black;
 }
+#notes {
+  padding: 10px;
+}
+a {
+  color: black;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: bold;
+}
 </style>
 <script type='module'>
 import { fs } from "/offbase.js"
 document.addEventListener("DOMContentLoaded", async () => {
-  let notes = await fs.promises.readdir("/home")
-  document.querySelector("#notes").innerHTML = notes.map((note) => {
-    return `<a class='note' href='/edit?note=${note}'>${note}</a>`
+  let filenames = await fs.promises.readdir("/home")
+  document.querySelector("#notes").innerHTML = filenames.filter((filename) => {
+    return filename !== ".git" && filename != "offbase.json"
+  }).map((filename) => {
+    return `<a class='note' href='/edit?note=${filename}'>${filename}</a>`
   })
 })
 </script>
@@ -22,7 +33,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 <body>
 <nav>
 <a id='home' href=".">Notes</a>
-<a href="/edit">+ New</a>
+<a href="./edit">+ New</a>
 </nav>
 <div id='notes'></div>
 </body>
